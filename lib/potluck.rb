@@ -29,4 +29,12 @@ class Potluck
 
     pluralize_categories.transform_values(&:sort)
   end
+
+  def ratio(category)
+    category_count = @dishes.count do |dish|
+      dish.category == category
+    end
+
+    ((category_count.to_f / @dishes.length) * 100).round(1)
+  end
 end
